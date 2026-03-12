@@ -32,9 +32,9 @@
 
     <script type="text/babel">
         // ========================================================
-        // ⚠️ PENTING: GANTI URL DI BAWAH DENGAN URL WEB APP MILIKMU
+        // URL WEB APP MILIKMU
         // ========================================================
-        const GAS_API_URL = "https://script.google.com/macros/s/AKfycbywv7eLkCPc0aTQM-cjeiKGDdSq7JEU7rwZ1sETZghz4hCjgHK37R_acF0zyPyzCn6nuQ/exec";
+        const GAS_API_URL = "https://script.google.com/macros/s/AKfycbwMsf9MCZMhu6EDDMWqW-_veHmxaCZDm3geOwH-DzpNL59htoxSJds23hP3judevOU5/exec";
 
         // --- INITIAL DATA ---
         const initialJadwalRabu = {
@@ -68,6 +68,8 @@
             { id: 'sekretaris2', jabatan: "Sekretaris 2", nama: "Bpk. [Nama Sekretaris 2]", wa: "62800000000", img: "https://ui-avatars.com/api/?name=Sekretaris+2&background=f0fdf4&color=14532d&size=128" },
             { id: 'bendahara1', jabatan: "Bendahara 1", nama: "Ibu Ari Pahlawani", wa: "62800000000", img: "https://ui-avatars.com/api/?name=Ari+Pahlawani&background=fffbeb&color=78350f&size=128" },
             { id: 'bendahara2', jabatan: "Bendahara 2", nama: "Ibu Kasfia Naibaho", wa: "62800000000", img: "https://ui-avatars.com/api/?name=Kasfia+Naibaho&background=fffbeb&color=78350f&size=128" },
+            { id: 'multimedia', jabatan: "Multimedia", nama: "Sdr. [Nama Multimedia]", wa: "62800000000", img: "https://ui-avatars.com/api/?name=Multimedia&background=e0e7ff&color=3730a3&size=128" },
+            { id: 'sound_system', jabatan: "Sound System", nama: "Sdr. [Nama Sound System]", wa: "62800000000", img: "https://ui-avatars.com/api/?name=Sound+System&background=e0e7ff&color=3730a3&size=128" },
             { id: 'diakon', jabatan: "Ketua Diakon & Diakones", nama: "Bpk. [Nama Ketua Diakon]", wa: "62800000000", img: "https://ui-avatars.com/api/?name=Diakon+Diakones&background=f3f4f6&color=1f2937&size=128" },
             { id: 'pemuda', jabatan: "Ketua Pemuda", nama: "Sdr. [Nama Ketua Pemuda]", wa: "62800000000", img: "https://ui-avatars.com/api/?name=Ketua+Pemuda&background=faf5ff&color=581c87&size=128" }
         ];
@@ -89,11 +91,14 @@
                 Phone: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>,
                 ChevronLeft: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="15 18 9 12 15 6"/></svg>,
                 ChevronRight: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="9 18 15 12 9 6"/></svg>,
+                ChevronDown: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="6 9 12 15 18 9"/></svg>,
                 Check: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="20 6 9 17 4 12"/></svg>,
                 X: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,
                 Edit: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>,
                 Trash: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>,
-                Settings: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                Settings: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>,
+                Eye: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>,
+                EyeOff: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
             };
             return icons[name] || null;
         };
@@ -132,7 +137,7 @@
         };
 
         // --- COMPONENTS ---
-        const Home = ({ setActiveTab }) => (
+        const Home = ({ setActiveTab, youtubeUrl }) => (
             <div className="space-y-4 md:space-y-6 animate-fade-in">
                 <div className="grid grid-cols-3 gap-2 md:gap-4">
                     <a href="https://sabbath-school.adventech.io/in" target="_blank" rel="noopener noreferrer" className="bg-white p-3 md:p-6 rounded-xl shadow-sm flex flex-col items-center text-center justify-center hover:bg-blue-50 transition border border-gray-100">
@@ -156,7 +161,7 @@
                     <div className="relative w-full overflow-hidden rounded-lg" style={{ paddingTop: '56.25%' }}>
                         <iframe 
                             className="absolute top-0 left-0 w-full h-full"
-                            src="https://www.youtube-nocookie.com/embed?listType=playlist&list=UUz6rQ_5zP0Y0c8V7aKx2jLQ" 
+                            src={youtubeUrl} 
                             title="YouTube video player" 
                             frameBorder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -427,7 +432,7 @@
             </div>
         );
 
-        const Live = ({ setActiveTab, activeRabu, activeSabat, rabuYMD, sabatYMD, showPerjamuan, perjamuanYMD, activePerjamuan }) => {
+        const Live = ({ setActiveTab, activeRabu, activeSabat, rabuYMD, sabatYMD, showPerjamuan, perjamuanYMD, activePerjamuan, youtubeUrl }) => {
             const today = new Date();
             const todayDay = today.getDay();
             
@@ -446,7 +451,7 @@
                 <div className="space-y-6 animate-fade-in">
                     <div className="bg-black rounded-xl overflow-hidden shadow-lg">
                         <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
-                            <iframe className="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed?listType=playlist&list=UUz6rQ_5zP0Y0c8V7aKx2jLQ" title="YouTube Live Stream" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                            <iframe className="absolute top-0 left-0 w-full h-full" src={youtubeUrl} title="YouTube Live Stream" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                         </div>
                         <div className="p-4 bg-gray-900 text-white">
                             <h2 className="font-bold text-lg flex items-center"><span className="w-3 h-3 rounded-full bg-red-600 animate-pulse mr-2"></span> Live Streaming ART1STV</h2>
@@ -599,15 +604,43 @@
         };
 
         const Hubungi = ({ setActiveTab, dataPejabat }) => {
+            // Kategorisasi Pejabat
+            const categories = [
+                { title: "Gembala Jemaat", filter: p => p.id === 'gembala' },
+                { title: "Ketua Jemaat", filter: p => p.id.startsWith('ketua') },
+                { title: "Sekretaris Jemaat", filter: p => p.id.startsWith('sekretaris') },
+                { title: "Bendahara Jemaat", filter: p => p.id.startsWith('bendahara') },
+                { title: "Pelayanan Teknis", filter: p => ['multimedia', 'sound_system'].includes(p.id) },
+                { title: "Departemen Lainnya", filter: p => ['diakon', 'pemuda'].includes(p.id) }
+            ];
+
             return (
                 <div className="space-y-6 animate-fade-in">
                     <button onClick={() => setActiveTab('home')} className="text-blue-600 font-medium flex items-center hover:underline mb-2">&larr; Kembali ke Home</button>
-                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                        <h2 className="text-xl font-bold mb-2 text-gray-800 border-b pb-2">Kontak Pelayan Jemaat</h2>
-                        <p className="text-sm text-gray-600 mb-6">Silakan klik pada salah satu nama pelayan jemaat di bawah ini untuk terhubung langsung via WhatsApp.</p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-stretch">
-                            {dataPejabat.map((p, idx) => (<a key={idx} href={`https://wa.me/${p.wa}`} target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl border border-gray-100 bg-white hover:bg-orange-50 hover:border-orange-200 hover:shadow-md transition group h-full"><img src={p.img} alt={p.nama} className="w-14 h-14 rounded-full object-cover mr-4 border-2 border-gray-100 group-hover:border-orange-300 transition shrink-0" /><div className="flex-1"><p className="text-[10px] font-bold text-orange-600 uppercase tracking-wider mb-0.5">{p.jabatan}</p><p className="font-semibold text-gray-800 leading-tight text-sm">{p.nama}</p><p className="text-xs text-gray-500 mt-1 flex items-center"><Icon name="MessageCircle" className="w-3 h-3 mr-1" /> WhatsApp</p></div></a>))}
-                        </div>
+                    
+                    <div className="space-y-6">
+                        {categories.map((cat, idx) => {
+                            const items = dataPejabat.filter(cat.filter);
+                            if (items.length === 0) return null; // Jika kategori kosong
+                            
+                            return (
+                                <div key={idx} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                    <h2 className="text-lg font-bold mb-4 text-gray-800 border-b pb-2">{cat.title}</h2>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-stretch">
+                                        {items.map((p, i) => (
+                                            <a key={i} href={`https://wa.me/${p.wa}`} target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl border border-gray-100 bg-white hover:bg-orange-50 hover:border-orange-200 hover:shadow-md transition group h-full">
+                                                <img src={p.img} alt={p.nama} className="w-14 h-14 rounded-full object-cover mr-4 border-2 border-gray-100 group-hover:border-orange-300 transition shrink-0" />
+                                                <div className="flex-1">
+                                                    <p className="text-[10px] font-bold text-orange-600 uppercase tracking-wider mb-0.5">{p.jabatan}</p>
+                                                    <p className="font-semibold text-gray-800 leading-tight text-sm">{p.nama}</p>
+                                                    <p className="text-xs text-gray-500 mt-1 flex items-center"><Icon name="MessageCircle" className="w-3 h-3 mr-1" /> WhatsApp</p>
+                                                </div>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             );
@@ -718,19 +751,40 @@
 
         const LoginModal = ({ isOpen, onClose, onSuccess }) => {
             const [password, setPassword] = React.useState('');
+            const [showPassword, setShowPassword] = React.useState(false);
             const [error, setError] = React.useState(false);
+            const [isLoading, setIsLoading] = React.useState(false);
 
             if (!isOpen) return null;
 
-            const handleLogin = (e) => {
+            const handleLogin = async (e) => {
                 e.preventDefault();
-                if (password === 'admin954') { setError(false); setPassword(''); onSuccess(); } else { setError(true); }
-            };
-
-            const handleLupaPassword = () => {
-                const subject = encodeURIComponent("Permintaan Reset Password Admin ART1S");
-                const body = encodeURIComponent("Syalom,\n\nSaya ingin mengajukan permohonan untuk mereset password Admin untuk web ART1S Tidar 1.\n\nTerima kasih.");
-                window.location.href = `mailto:tidar1.gmahk@gmail.com?subject=${subject}&body=${body}`;
+                setIsLoading(true);
+                setError(false);
+                
+                try {
+                    const response = await fetch(GAS_API_URL, {
+                        method: 'POST',
+                        body: JSON.stringify({ action: 'verifyPassword', password: password })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error("Gagal mengambil data dari server");
+                    }
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        setPassword('');
+                        onSuccess(password);
+                    } else {
+                        setError(true);
+                    }
+                } catch (err) {
+                    console.error(err);
+                    alert("Gagal terhubung ke server. Pastikan URL Web App sudah benar.");
+                }
+                setIsLoading(false);
             };
 
             return (
@@ -741,21 +795,27 @@
                         <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">Admin Login</h2>
                         <p className="text-sm text-center text-gray-500 mb-6">Masuk untuk mengelola jadwal dan data jemaat.</p>
                         <form onSubmit={handleLogin}>
-                            <div className="mb-4">
+                            <div className="mb-6">
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoFocus className={`w-full p-3 border ${error ? 'border-red-500 bg-red-50' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-gray-800 outline-none transition`} placeholder="Masukkan password..." />
+                                <div className="relative">
+                                    <input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} autoFocus className={`w-full p-3 pr-10 border ${error ? 'border-red-500 bg-red-50' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-gray-800 outline-none transition`} placeholder="Masukkan password..." disabled={isLoading} />
+                                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none">
+                                        <Icon name={showPassword ? "EyeOff" : "Eye"} className="w-5 h-5" />
+                                    </button>
+                                </div>
                                 {error && <p className="text-red-500 text-xs mt-1 font-medium">Password salah, coba lagi.</p>}
                             </div>
-                            <button type="submit" className="w-full bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 rounded-lg transition shadow-md">Masuk ke Dashboard</button>
+                            <button type="submit" disabled={isLoading} className={`w-full ${isLoading ? 'bg-gray-500' : 'bg-gray-900 hover:bg-gray-800'} text-white font-bold py-3 rounded-lg transition shadow-md`}>
+                                {isLoading ? 'Memverifikasi...' : 'Masuk ke Dashboard'}
+                            </button>
                         </form>
-                        <div className="mt-6 text-center"><button onClick={handleLupaPassword} className="text-sm text-gray-500 hover:text-gray-800 hover:underline">Lupa Password?</button></div>
                     </div>
                 </div>
             );
         };
 
-        const AdminDashboard = ({ dataPejabat, setDataPejabat, jadwalDB, setJadwalDB }) => {
-            const [adminTab, setAdminTab] = React.useState('jadwal');
+        const AdminDashboard = ({ dataPejabat, setDataPejabat, jadwalDB, setJadwalDB, adminToken, setAdminToken, youtubeUrl, setYoutubeUrl }) => {
+            const [adminTab, setAdminTab] = React.useState('jadwal'); // jadwal, pelayan, pengaturan
             const [viewMonth, setViewMonth] = React.useState(new Date().getMonth());
             const [viewYear, setViewYear] = React.useState(new Date().getFullYear());
             const [subTab, setSubTab] = React.useState('rabu'); 
@@ -763,6 +823,17 @@
             const [editForm, setEditForm] = React.useState([]);
             const [isSavingJadwal, setIsSavingJadwal] = React.useState(false);
             const [isSavingPejabat, setIsSavingPejabat] = React.useState(false);
+
+            // State Ganti Password
+            const [oldPassword, setOldPassword] = React.useState('');
+            const [newPassword, setNewPassword] = React.useState('');
+            const [showOldPass, setShowOldPass] = React.useState(false);
+            const [showNewPass, setShowNewPass] = React.useState(false);
+            const [isChangingPass, setIsChangingPass] = React.useState(false);
+
+            // State URL YouTube
+            const [editYoutubeUrl, setEditYoutubeUrl] = React.useState(youtubeUrl);
+            const [isSavingUrl, setIsSavingUrl] = React.useState(false);
 
             const monthNames = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
             
@@ -821,7 +892,7 @@
                 setEditForm(newForm);
             };
 
-            // MENGGUNAKAN FETCH UNTUK MENYIMPAN JADWAL
+            // SIMPAN JADWAL
             const handleSaveRow = (date) => {
                 const baseData = jadwalDB[date] ? JSON.parse(JSON.stringify(jadwalDB[date])) : JSON.parse(JSON.stringify(isRabu ? initialJadwalRabu : initialJadwalSabat));
                 if (subTab === 'rabu') baseData.petugas = editForm;
@@ -837,6 +908,7 @@
                     method: 'POST',
                     body: JSON.stringify({
                         action: 'saveJadwal',
+                        password: adminToken, // Otorisasi
                         tanggal: date,
                         data: baseData
                     })
@@ -844,26 +916,26 @@
                 .then(res => res.json())
                 .then(result => {
                     setIsSavingJadwal(false);
-                    setJadwalDB({...jadwalDB, [date]: baseData});
-                    setEditingDate(null);
+                    if (result.success) {
+                        setJadwalDB({...jadwalDB, [date]: baseData});
+                        setEditingDate(null);
+                    } else { alert("Gagal menyimpan: " + (result.message || "Akses ditolak.")); }
                 })
-                .catch(err => {
-                    alert("Gagal menyimpan data ke server.");
-                    setIsSavingJadwal(false);
-                });
+                .catch(err => { alert("Gagal terhubung ke server."); setIsSavingJadwal(false); });
             };
 
-            // MENGGUNAKAN FETCH UNTUK MENGHAPUS (RESET) JADWAL
+            // HAPUS (RESET) JADWAL
             const handleDeleteRow = (date) => {
                 if(!jadwalDB[date]) return; 
                 if(window.confirm(`Kembalikan jadwal ${formatIndoDateShort(date)} ke default?`)) {
                     setIsSavingJadwal(true);
                     const defaultData = JSON.parse(JSON.stringify(isRabu ? initialJadwalRabu : initialJadwalSabat));
-                    
+
                     fetch(GAS_API_URL, {
                         method: 'POST',
                         body: JSON.stringify({
                             action: 'saveJadwal',
+                            password: adminToken, // Otorisasi
                             tanggal: date,
                             data: defaultData
                         })
@@ -871,36 +943,81 @@
                     .then(res => res.json())
                     .then(result => {
                         setIsSavingJadwal(false);
-                        const newDB = {...jadwalDB};
-                        delete newDB[date];
-                        setJadwalDB(newDB);
+                        if (result.success) {
+                            const newDB = {...jadwalDB};
+                            delete newDB[date];
+                            setJadwalDB(newDB);
+                        } else { alert("Gagal mereset: " + (result.message || "Akses ditolak.")); }
                     })
-                    .catch(err => {
-                        alert("Gagal mereset data.");
-                        setIsSavingJadwal(false);
-                    });
+                    .catch(err => { alert("Gagal mereset data."); setIsSavingJadwal(false); });
                 }
             };
 
-            // MENGGUNAKAN FETCH UNTUK MENYIMPAN PEJABAT
+            // SIMPAN PEJABAT
             const handleSimpanPejabat = () => {
                 setIsSavingPejabat(true);
                 fetch(GAS_API_URL, {
                     method: 'POST',
                     body: JSON.stringify({
                         action: 'savePejabat',
+                        password: adminToken, // Otorisasi
                         data: dataPejabat
                     })
                 })
                 .then(res => res.json())
                 .then(result => {
                     setIsSavingPejabat(false);
-                    alert("Berhasil! Data Pelayan Jemaat sudah tersimpan ke server.");
+                    if (result.success) {
+                        alert("Berhasil! Data Pelayan Jemaat tersimpan di Google Sheets.");
+                    } else { alert("Gagal menyimpan: " + (result.message || "Akses ditolak.")); }
                 })
-                .catch(err => {
-                    alert("Gagal menyimpan data Pejabat.");
-                    setIsSavingPejabat(false);
-                });
+                .catch(err => { alert("Gagal menyimpan data Pejabat."); setIsSavingPejabat(false); });
+            };
+
+            // GANTI PASSWORD
+            const handleGantiPassword = async (e) => {
+                e.preventDefault();
+                setIsChangingPass(true);
+                try {
+                    const res = await fetch(GAS_API_URL, {
+                        method: 'POST',
+                        body: JSON.stringify({ action: 'changePassword', oldPassword: oldPassword, newPassword: newPassword })
+                    });
+                    const result = await res.json();
+                    if (result.success) {
+                        alert("Password Admin berhasil diperbarui!");
+                        setAdminToken(newPassword); // Update token lokal
+                        setOldPassword('');
+                        setNewPassword('');
+                    } else {
+                        alert("Gagal merubah password: " + (result.message || "Password lama salah."));
+                    }
+                } catch(err) {
+                    alert("Gagal terhubung ke server.");
+                }
+                setIsChangingPass(false);
+            };
+
+            // SIMPAN YOUTUBE URL
+            const handleSaveYoutubeUrl = async (e) => {
+                e.preventDefault();
+                setIsSavingUrl(true);
+                try {
+                    const res = await fetch(GAS_API_URL, {
+                        method: 'POST',
+                        body: JSON.stringify({ action: 'saveYoutubeUrl', password: adminToken, url: editYoutubeUrl })
+                    });
+                    const result = await res.json();
+                    if (result.success) {
+                        alert("URL YouTube berhasil diperbarui!");
+                        setYoutubeUrl(editYoutubeUrl);
+                    } else {
+                        alert("Gagal merubah URL: " + (result.message || "Akses ditolak."));
+                    }
+                } catch(err) {
+                    alert("Gagal terhubung ke server.");
+                }
+                setIsSavingUrl(false);
             };
 
             const handleFileChange = (e, id) => {
@@ -944,9 +1061,10 @@
             return (
                 <div className="space-y-6 animate-fade-in">
                     <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                        <div className="flex border-b border-gray-200">
+                        <div className="flex flex-col sm:flex-row border-b border-gray-200">
                             <button onClick={() => setAdminTab('jadwal')} className={`flex-1 py-4 font-bold text-sm md:text-base text-center transition-colors ${adminTab === 'jadwal' ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50'}`}>Kelola Jadwal</button>
-                            <button onClick={() => setAdminTab('pelayan')} className={`flex-1 py-4 font-bold text-sm md:text-base text-center transition-colors ${adminTab === 'pelayan' ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50'}`}>Kelola Pelayan Jemaat</button>
+                            <button onClick={() => setAdminTab('pelayan')} className={`flex-1 py-4 font-bold text-sm md:text-base text-center transition-colors border-l sm:border-t-0 border-t border-gray-200 ${adminTab === 'pelayan' ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50'}`}>Kelola Pejabat</button>
+                            <button onClick={() => setAdminTab('pengaturan')} className={`flex-1 py-4 font-bold text-sm md:text-base text-center transition-colors border-l sm:border-t-0 border-t border-gray-200 ${adminTab === 'pengaturan' ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50'}`}>Pengaturan Admin</button>
                         </div>
 
                         <div className={`p-4 md:p-6 ${adminTab === 'jadwal' ? 'bg-[#f4f7fa]' : 'bg-white'}`}>
@@ -1039,7 +1157,7 @@
                             {adminTab === 'pelayan' && (
                                 <div className="space-y-4 animate-fade-in bg-white p-2 md:p-4 rounded-xl">
                                     <div className="flex justify-between items-center bg-green-50 p-4 rounded-xl border border-green-200">
-                                        <p className="text-sm text-green-800 font-medium w-2/3">Edit tabel di bawah, tekan ikon potret untuk ganti foto dari HP, lalu simpan perubahan.</p>
+                                        <p className="text-sm text-green-800 font-medium w-2/3">Edit tabel di bawah, lalu klik Simpan agar data otomatis tersinkron dengan Google Sheets.</p>
                                         <button onClick={handleSimpanPejabat} disabled={isSavingPejabat} className={`${isSavingPejabat ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'} text-white font-bold py-2.5 px-4 md:px-6 rounded-lg transition shadow-md`}>{isSavingPejabat ? 'Menyimpan...' : 'Simpan Pejabat'}</button>
                                     </div>
                                     <div className="overflow-x-auto border border-gray-200 rounded-lg">
@@ -1062,6 +1180,53 @@
                                     </div>
                                 </div>
                             )}
+
+                            {adminTab === 'pengaturan' && (
+                                <div className="max-w-md mx-auto mt-6 animate-fade-in space-y-6">
+                                    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                        <div className="flex items-center space-x-3 mb-6 border-b pb-4">
+                                            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600"><Icon name="Settings" className="w-5 h-5" /></div>
+                                            <div><h3 className="font-bold text-gray-800 text-lg">Ganti Password Admin</h3><p className="text-xs text-gray-500">Perbarui kata sandi keamanan Anda.</p></div>
+                                        </div>
+                                        <form onSubmit={handleGantiPassword} className="space-y-4">
+                                            <div>
+                                                <label className="block text-sm font-medium text-gray-700 mb-1">Password Lama</label>
+                                                <div className="relative">
+                                                    <input type={showOldPass ? "text" : "password"} value={oldPassword} onChange={e => setOldPassword(e.target.value)} required className="w-full p-2.5 pr-10 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition bg-gray-50" />
+                                                    <button type="button" onClick={() => setShowOldPass(!showOldPass)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"><Icon name={showOldPass ? "EyeOff" : "Eye"} className="w-5 h-5" /></button>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label className="block text-sm font-medium text-gray-700 mb-1">Password Baru</label>
+                                                <div className="relative">
+                                                    <input type={showNewPass ? "text" : "password"} value={newPassword} onChange={e => setNewPassword(e.target.value)} required minLength="6" className="w-full p-2.5 pr-10 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition bg-gray-50" />
+                                                    <button type="button" onClick={() => setShowNewPass(!showNewPass)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"><Icon name={showNewPass ? "EyeOff" : "Eye"} className="w-5 h-5" /></button>
+                                                </div>
+                                            </div>
+                                            <button type="submit" disabled={isChangingPass} className={`w-full ${isChangingPass ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'} text-white font-bold py-3 rounded-lg transition shadow-md mt-2`}>
+                                                {isChangingPass ? 'Memproses...' : 'Simpan Password Baru'}
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                                        <div className="flex items-center space-x-3 mb-6 border-b pb-4">
+                                            <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600"><Icon name="Video" className="w-5 h-5" /></div>
+                                            <div><h3 className="font-bold text-gray-800 text-lg">URL YouTube Embed</h3><p className="text-xs text-gray-500">Ubah tautan video di halaman Home dan Live.</p></div>
+                                        </div>
+                                        <form onSubmit={handleSaveYoutubeUrl} className="space-y-4">
+                                            <div>
+                                                <label className="block text-sm font-medium text-gray-700 mb-1">Link Embed YouTube</label>
+                                                <textarea value={editYoutubeUrl} onChange={e => setEditYoutubeUrl(e.target.value)} required rows="3" className="w-full p-2.5 border border-gray-300 rounded focus:ring-2 focus:ring-red-500 outline-none transition bg-gray-50 text-sm font-mono"></textarea>
+                                                <p className="text-[10px] text-gray-500 mt-1">Pastikan URL diawali dengan <b>https://www.youtube.com/embed/...</b> atau <b>https://www.youtube-nocookie.com/embed/...</b></p>
+                                            </div>
+                                            <button type="submit" disabled={isSavingUrl} className={`w-full ${isSavingUrl ? 'bg-red-400' : 'bg-red-600 hover:bg-red-700'} text-white font-bold py-3 rounded-lg transition shadow-md mt-2`}>
+                                                {isSavingUrl ? 'Menyimpan...' : 'Simpan URL Baru'}
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -1073,6 +1238,10 @@
             const [activeTab, setActiveTab] = React.useState('home');
             const [jadwalDB, setJadwalDB] = React.useState({});
             const [dataPejabat, setDataPejabat] = React.useState(initialDataPejabat);
+            const [youtubeUrl, setYoutubeUrl] = React.useState("https://www.youtube-nocookie.com/embed?listType=playlist&list=UUz6rQ_5zP0Y0c8V7aKx2jLQ");
+
+            // Token Admin (berisi password valid setelah login)
+            const [adminToken, setAdminToken] = React.useState('');
 
             const today = new Date();
             today.setHours(0,0,0,0);
@@ -1085,17 +1254,16 @@
             nextSabat.setDate(today.getDate() + ((6 - today.getDay() + 7) % 7));
             const sabatYMD = toYMD(nextSabat);
 
-            // Perhitungan Hari Perjamuan (Sabtu Terakhir di Bulan Mar, Jun, Okt, Des)
             const getNextPerjamuan = () => {
                 const year = today.getFullYear();
-                const months = [2, 5, 9, 11]; // 0-indexed (Mar, Jun, Oct, Dec)
+                const months = [2, 5, 9, 11];
                 for (let m of months) {
                     let lastDay = new Date(year, m + 1, 0);
                     let lastSat = new Date(lastDay);
                     lastSat.setDate(lastDay.getDate() - ((lastDay.getDay() + 1) % 7));
                     if (today <= lastSat) return lastSat;
                 }
-                let lastDayNextYear = new Date(year + 1, 3, 0); // Next year March
+                let lastDayNextYear = new Date(year + 1, 3, 0);
                 let lastSatNextYear = new Date(lastDayNextYear);
                 lastSatNextYear.setDate(lastDayNextYear.getDate() - ((lastDayNextYear.getDay() + 1) % 7));
                 return lastSatNextYear;
@@ -1104,7 +1272,6 @@
             const nextPerjamuanObj = getNextPerjamuan();
             const perjamuanYMD = toYMD(nextPerjamuanObj);
             
-            // Logic: Tampilkan 8 hari sebelum hari-H
             const diffTime = nextPerjamuanObj - today;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             const showPerjamuan = diffDays <= 8 && diffDays >= 0;
@@ -1116,15 +1283,20 @@
             // MENGAMBIL DATA DARI REST API GOOGLE APPS SCRIPT
             React.useEffect(() => {
                 fetch(`${GAS_API_URL}?action=getData`)
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Jaringan bermasalah atau API tidak ditemukan');
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         if (data.dataPejabat) setDataPejabat(data.dataPejabat);
                         if (data.jadwalDB) setJadwalDB(data.jadwalDB);
+                        if (data.youtubeUrl) setYoutubeUrl(data.youtubeUrl);
                         setIsAppLoading(false);
                     })
                     .catch(error => {
-                        console.error('Error fetching data:', error);
-                        // Jika gagal ambil data (misal API error), app akan menggunakan initial_data di atas
+                        console.error('Error fetching data, menggunakan data default:', error);
                         setIsAppLoading(false); 
                     });
             }, []);
@@ -1141,16 +1313,16 @@
             ];
 
             const handleAdminClick = () => { if (isAdminLoggedIn) { setActiveTab('admin_dashboard'); } else { setShowLoginModal(true); } };
-            const handleLogout = () => { setIsAdminLoggedIn(false); setActiveTab('home'); };
+            const handleLogout = () => { setIsAdminLoggedIn(false); setAdminToken(''); setActiveTab('home'); };
 
             const renderContent = () => {
                 switch(activeTab) {
-                    case 'home': return <Home setActiveTab={setActiveTab} />;
+                    case 'home': return <Home setActiveTab={setActiveTab} youtubeUrl={youtubeUrl} />;
                     case 'belajar': return <Belajar setActiveTab={setActiveTab} />;
                     case 'belajar_alkitab': return <DetailAlkitab setActiveTab={setActiveTab} dataPejabat={dataPejabat} />;
                     case 'belajar_28dasar': return <Detail28Dasar setActiveTab={setActiveTab} dataPejabat={dataPejabat} />;
                     case 'belajar_egw': return <DetailEGW setActiveTab={setActiveTab} dataPejabat={dataPejabat} />;
-                    case 'live': return <Live setActiveTab={setActiveTab} activeRabu={activeRabu} activeSabat={activeSabat} rabuYMD={rabuYMD} sabatYMD={sabatYMD} showPerjamuan={showPerjamuan} perjamuanYMD={perjamuanYMD} activePerjamuan={activePerjamuan} />;
+                    case 'live': return <Live setActiveTab={setActiveTab} activeRabu={activeRabu} activeSabat={activeSabat} rabuYMD={rabuYMD} sabatYMD={sabatYMD} showPerjamuan={showPerjamuan} perjamuanYMD={perjamuanYMD} activePerjamuan={activePerjamuan} youtubeUrl={youtubeUrl} />;
                     case 'jadwal': return <Jadwal activeRabu={activeRabu} activeSabat={activeSabat} rabuYMD={rabuYMD} sabatYMD={sabatYMD} showPerjamuan={showPerjamuan} perjamuanYMD={perjamuanYMD} activePerjamuan={activePerjamuan} />;
                     case 'persembahan': return <Persembahan dataPejabat={dataPejabat} />;
                     case 'keanggotaan': return <Keanggotaan setActiveTab={setActiveTab} />;
@@ -1158,8 +1330,8 @@
                     case 'pindah_masuk': return <PindahMasuk setActiveTab={setActiveTab} dataPejabat={dataPejabat} />;
                     case 'hubungi': return <Hubungi setActiveTab={setActiveTab} dataPejabat={dataPejabat} />;
                     case 'form_acms': return <FormACMS setActiveTab={setActiveTab} />;
-                    case 'admin_dashboard': return isAdminLoggedIn ? <AdminDashboard dataPejabat={dataPejabat} setDataPejabat={setDataPejabat} jadwalDB={jadwalDB} setJadwalDB={setJadwalDB}/> : <Home setActiveTab={setActiveTab} />;
-                    default: return <Home setActiveTab={setActiveTab} />;
+                    case 'admin_dashboard': return isAdminLoggedIn ? <AdminDashboard dataPejabat={dataPejabat} setDataPejabat={setDataPejabat} jadwalDB={jadwalDB} setJadwalDB={setJadwalDB} adminToken={adminToken} setAdminToken={setAdminToken} youtubeUrl={youtubeUrl} setYoutubeUrl={setYoutubeUrl} /> : <Home setActiveTab={setActiveTab} youtubeUrl={youtubeUrl} />;
+                    default: return <Home setActiveTab={setActiveTab} youtubeUrl={youtubeUrl} />;
                 }
             };
 
@@ -1169,7 +1341,7 @@
 
             return (
                 <div className="min-h-screen bg-gray-50 flex flex-col">
-                    <LoginModal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)} onSuccess={() => { setIsAdminLoggedIn(true); setShowLoginModal(false); setActiveTab('admin_dashboard'); }} />
+                    <LoginModal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)} onSuccess={(token) => { setAdminToken(token); setIsAdminLoggedIn(true); setShowLoginModal(false); setActiveTab('admin_dashboard'); }} />
 
                     <header className="md:hidden bg-white shadow-sm sticky top-0 z-50">
                         <div className="flex justify-between items-center px-4 py-3">
