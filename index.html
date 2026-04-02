@@ -321,8 +321,8 @@
             );
 
             const susunanTabs = [
-                { id: 'ss', label: 'Sekolah Sabat', icon: 'BookOpen', activeColor: 'text-navy-900' },
                 { id: 'khotbah', label: 'Khotbah / Umum', icon: 'List', activeColor: 'text-navy-900' },
+                { id: 'ss', label: 'Sekolah Sabat', icon: 'BookOpen', activeColor: 'text-navy-900' },
                 { id: 'diakon', label: 'Diakon & Diakones', icon: 'Users', activeColor: 'text-navy-900' },
                 { id: 'musik', label: 'Pelayanan Musik', icon: 'Music', activeColor: 'text-navy-900' }
             ];
@@ -355,19 +355,6 @@
                             </div>
 
                             {/* TAB CONTENT */}
-                            {openSection === 'ss' && (
-                                <div className="p-4 md:p-6 animate-fade-in bg-white">
-                                    {renderItem("Lagu Pengantar", "LS 205")}
-                                    {renderItem("Pemimpin Acara", getOfficer(activeSabat.sekolahSabat, "Presider"))}
-                                    {renderItem("Lagu Buka", susunan.ssLaguBuka)}
-                                    {renderItem("Ayat Inti & Doa Buka", getOfficer(activeSabat.sekolahSabat, "Ayat Inti & Doa Buka"))}
-                                    {renderItem("Berita Misi", getOfficer(activeSabat.sekolahSabat, "Berita Misi"))}
-                                    {renderItem("Diskusi Sekolah Sabat", "Kelas Dewasa, Kelas Pendalaman Alkitab, Kelas Anak-anak")}
-                                    {renderItem("Lagu Tutup", susunan.ssLaguTutup)}
-                                    {renderItem("Doa Tutup", getOfficer(activeSabat.sekolahSabat, "Doa Tutup"))}
-                                </div>
-                            )}
-
                             {openSection === 'khotbah' && (
                                 <div className="p-4 md:p-6 animate-fade-in bg-white">
                                     {renderItem("Lagu Pengantar", "LS 515 - Tuhan Ada Dalam Bait Allah")}
@@ -388,6 +375,19 @@
                                     {renderItem("Lagu Tutup", susunan.kLaguTutup)}
                                     {renderItem("Doa Berkat", getOfficer(activeSabat.khotbah, "Khotbah"))}
                                     {renderItem("Pengumuman", "Dept. Komunikasi")}
+                                </div>
+                            )}
+
+                            {openSection === 'ss' && (
+                                <div className="p-4 md:p-6 animate-fade-in bg-white">
+                                    {renderItem("Lagu Pengantar", "LS 205")}
+                                    {renderItem("Pemimpin Acara", getOfficer(activeSabat.sekolahSabat, "Presider"))}
+                                    {renderItem("Lagu Buka", susunan.ssLaguBuka)}
+                                    {renderItem("Ayat Inti & Doa Buka", getOfficer(activeSabat.sekolahSabat, "Ayat Inti & Doa Buka"))}
+                                    {renderItem("Berita Misi", getOfficer(activeSabat.sekolahSabat, "Berita Misi"))}
+                                    {renderItem("Diskusi Sekolah Sabat", "Kelas Dewasa, Kelas Pendalaman Alkitab, Kelas Anak-anak")}
+                                    {renderItem("Lagu Tutup", susunan.ssLaguTutup)}
+                                    {renderItem("Doa Tutup", getOfficer(activeSabat.sekolahSabat, "Doa Tutup"))}
                                 </div>
                             )}
 
@@ -625,6 +625,17 @@
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 items-start">
                         <div className="space-y-6">
                             <div>
+                                <div className="flex justify-between items-end mb-2 bg-navy-50/50 p-3 rounded-xl border border-navy-100/50"><h3 className="font-bold text-navy-800 text-sm uppercase tracking-wider">Khotbah / Umum</h3><span className="text-[11px] text-navy-600 font-bold bg-white px-2 py-0.5 rounded-full border border-navy-100">{activeSabat.khotbahTime}</span></div>
+                                <div className="flex flex-col">{activeSabat.khotbah.map((p, idx) => (<div key={idx} className="flex justify-between items-center py-2 border-b border-navy-50/50 last:border-0 hover:bg-navy-50/30 transition-colors rounded-lg px-2"><span className="text-sm text-navy-500 font-medium">{p.tugas}</span><span className="text-sm font-bold text-navy-900 text-right">{p.nama}</span></div>))}</div>
+                            </div>
+                            <div>
+                                <div className="mb-2 bg-navy-50/50 p-3 rounded-xl border border-navy-100/50"><h3 className="font-bold text-navy-800 text-sm uppercase tracking-wider">Pelayanan Musik</h3></div>
+                                <div className="flex flex-col">{activeSabat.musik.map((p, idx) => (<div key={idx} className="flex justify-between items-center py-2 border-b border-navy-50/50 last:border-0 hover:bg-navy-50/30 transition-colors rounded-lg px-2"><span className="text-sm text-navy-500 font-medium">{p.tugas}</span><span className="text-sm font-bold text-navy-900 text-right">{p.nama}</span></div>))}</div>
+                            </div>
+                        </div>
+                        
+                        <div className="space-y-6">
+                            <div>
                                 <div className="flex justify-between items-end mb-2 bg-navy-50/50 p-3 rounded-xl border border-navy-100/50"><h3 className="font-bold text-navy-800 text-sm uppercase tracking-wider">Sekolah Sabat</h3><span className="text-[11px] text-navy-600 font-bold bg-white px-2 py-0.5 rounded-full border border-navy-100">{activeSabat.sekolahSabatTime}</span></div>
                                 <div className="flex flex-col">{activeSabat.sekolahSabat.map((p, idx) => (<div key={idx} className="flex justify-between items-center py-2 border-b border-navy-50/50 last:border-0 hover:bg-navy-50/30 transition-colors rounded-lg px-2"><span className="text-sm text-navy-500 font-medium">{p.tugas}</span><span className="text-sm font-bold text-navy-900 text-right">{p.nama}</span></div>))}</div>
                             </div>
@@ -634,16 +645,6 @@
                             </div>
                         </div>
 
-                        <div className="space-y-6">
-                            <div>
-                                <div className="flex justify-between items-end mb-2 bg-navy-50/50 p-3 rounded-xl border border-navy-100/50"><h3 className="font-bold text-navy-800 text-sm uppercase tracking-wider">Khotbah / Umum</h3><span className="text-[11px] text-navy-600 font-bold bg-white px-2 py-0.5 rounded-full border border-navy-100">{activeSabat.khotbahTime}</span></div>
-                                <div className="flex flex-col">{activeSabat.khotbah.map((p, idx) => (<div key={idx} className="flex justify-between items-center py-2 border-b border-navy-50/50 last:border-0 hover:bg-navy-50/30 transition-colors rounded-lg px-2"><span className="text-sm text-navy-500 font-medium">{p.tugas}</span><span className="text-sm font-bold text-navy-900 text-right">{p.nama}</span></div>))}</div>
-                            </div>
-                            <div>
-                                <div className="mb-2 bg-navy-50/50 p-3 rounded-xl border border-navy-100/50"><h3 className="font-bold text-navy-800 text-sm uppercase tracking-wider">Pelayanan Musik</h3></div>
-                                <div className="flex flex-col">{activeSabat.musik.map((p, idx) => (<div key={idx} className="flex justify-between items-center py-2 border-b border-navy-50/50 last:border-0 hover:bg-navy-50/30 transition-colors rounded-lg px-2"><span className="text-sm text-navy-500 font-medium">{p.tugas}</span><span className="text-sm font-bold text-navy-900 text-right">{p.nama}</span></div>))}</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
