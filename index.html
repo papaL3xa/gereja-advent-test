@@ -1173,7 +1173,7 @@
                     date.setDate(date.getDate() + 1);
                 }
                 if (subTab === 'perjamuan') {
-                    const perjamuanMonths = [2, 5, 9, 11];
+                    const perjamuanMonths = [2, 5, 8, 11];
                     if (perjamuanMonths.includes(viewMonth)) return [dates[dates.length - 1]];
                     return [];
                 }
@@ -1487,7 +1487,7 @@
                                     {subTab === 'perjamuan' && (
                                         <div className="bg-gold-50/50 border border-gold-200 p-4 rounded-xl text-navy-800 text-sm flex items-start shadow-sm">
                                             <Icon name="Gift" className="w-5 h-5 text-gold-500 mr-3 shrink-0" />
-                                            <p><b>Jadwal Spesial:</b> Perjamuan Kudus hanya dilaksanakan pada <span className="font-bold underline text-gold-600">Sabtu terakhir</span> di bulan Maret, Juni, Oktober, dan Desember. Mengisi jadwal pada tanggal lain tidak akan memunculkannya secara otomatis di bulan tersebut.</p>
+                                            <p><b>Jadwal Spesial:</b> Perjamuan Kudus hanya dilaksanakan pada <span className="font-bold underline text-gold-600">Sabtu</span> di bulan Maret, September, dan Desember. Mengisi jadwal pada tanggal lain tidak akan memunculkannya secara otomatis di bulan tersebut.</p>
                                         </div>
                                     )}
 
