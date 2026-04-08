@@ -85,10 +85,12 @@ function doGet(e) {
   var sPengaturan = ss.getSheetByName("Pengaturan");
   var pengData = sPengaturan.getDataRange().getValues();
   var youtubeUrl = "https://www.youtube-nocookie.com/embed?listType=playlist&list=UUz6rQ_5zP0Y0c8V7aKx2jLQ";
+  var pengumuman = "";
   var kategoriPejabat = ["Gembala", "Officers", "Departemen & Pelayanan", "Lainnya"];
   
   for (var i = 1; i < pengData.length; i++) {
     if (pengData[i][0] === "YOUTUBE_URL") youtubeUrl = pengData[i][1].toString();
+    if (pengData[i][0] === "PENGUMUMAN") pengumuman = pengData[i][1].toString();
     if (pengData[i][0] === "KATEGORI_PEJABAT") {
       try {
         kategoriPejabat = JSON.parse(pengData[i][1].toString());
@@ -192,6 +194,7 @@ function doGet(e) {
     dataPejabat: dataPejabat,
     jadwalDB: jadwalDB,
     youtubeUrl: youtubeUrl,
+    pengumuman: pengumuman,
     kategoriPejabat: kategoriPejabat
   })).setMimeType(ContentService.MimeType.JSON);
 }
@@ -244,6 +247,28 @@ function doPost(e) {
     return ContentService.createTextOutput(JSON.stringify({success: true})).setMimeType(ContentService.MimeType.JSON);
   }
   
+  // --- Aksi: Simpan Pengumuman ---
+  if (action === "savePengumuman") {
+    if (payload.password !== currentPassword) { 
+      return ContentService.createTextOutput(JSON.stringify({ success: false, message: "Akses ditolak. Password salah." }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    var pengData = sPengaturan.getDataRange().getValues();
+    var found = false;
+    for (var i = 1; i < pengData.length; i++) {
+      if (pengData[i][0] === "PENGUMUMAN") {
+        sPengaturan.getRange(i + 1, 2).setValue(payload.pengumuman || "");
+        found = true;
+        break;
+      }
+    }
+    if (!found) { sPengaturan.appendRow(["PENGUMUMAN", payload.pengumuman || ""]); }
+    
+    return ContentService.createTextOutput(JSON.stringify({ success: true }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   // --- Aksi: Simpan Jadwal (Memisahkan data ke tab yang tepat) ---
   if (action === "saveJadwal") {
     if (payload.password !== currentPassword) { return ContentService.createTextOutput(JSON.stringify({success: false, message: "Akses Ditolak"})).setMimeType(ContentService.MimeType.JSON); }

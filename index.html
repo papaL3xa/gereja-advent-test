@@ -115,7 +115,7 @@
         // ========================================================
         // URL WEB APP MILIKMU
         // ========================================================
-        const GAS_API_URL = "https://script.google.com/macros/s/AKfycbyoUzRbdbDsqHHiCcrbX3i9C9A177prTfxHZfxQRk0AYOP7UWVqjNPHAJmast1zSlHI/exec";
+        const GAS_API_URL = "https://script.google.com/macros/s/AKfycbwVPmot0CUM39NA45QZR_4goadwSypnsMoHbziXj-ZGHNd6AF0cr7UpeTX6HhYmwl_U/exec";
 
         // --- INITIAL DATA ---
         const defaultSusunan = {
@@ -192,7 +192,9 @@
                 Eye: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></svg>,
                 EyeOff: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" /><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" /><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" /><line x1="2" x2="22" y1="2" y2="22" /></svg>,
                 Music: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></svg>,
-                List: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="8" y1="6" x2="21" y2="6" /><line x1="8" y1="12" x2="21" y2="12" /><line x1="8" y1="18" x2="21" y2="18" /><line x1="3" y1="6" x2="3.01" y2="6" /><line x1="3" y1="12" x2="3.01" y2="12" /><line x1="3" y1="18" x2="3.01" y2="18" /></svg>
+                List: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="8" y1="6" x2="21" y2="6" /><line x1="8" y1="12" x2="21" y2="12" /><line x1="8" y1="18" x2="21" y2="18" /><line x1="3" y1="6" x2="3.01" y2="6" /><line x1="3" y1="12" x2="3.01" y2="12" /><line x1="3" y1="18" x2="3.01" y2="18" /></svg>,
+                Megaphone: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg>,
+                Info: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
             };
             return icons[name] || null;
         };
@@ -231,7 +233,7 @@
         };
 
         // --- COMPONENTS ---
-        const Home = ({ setActiveTab, youtubeUrl }) => (
+        const Home = ({ setActiveTab, youtubeUrl, pengumuman }) => (
             <div className="space-y-6 md:space-y-8 animate-fade-in relative z-10">
                 <div className="grid grid-cols-3 gap-3 md:gap-5">
                     <a href="https://sabbath-school.adventech.io/in" target="_blank" rel="noopener noreferrer" className="bg-white p-4 md:p-6 rounded-[1.25rem] shadow-sm flex flex-col items-center text-center justify-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-navy-100/60 group">
@@ -276,6 +278,18 @@
                         <h3 className="font-bold text-[11px] md:text-sm leading-tight text-navy-900 group-hover:text-gold-700 transition-colors">Persembahan<br />& Perpuluhan</h3>
                     </div>
                 </div>
+
+                {pengumuman && (
+                    <div className="bg-gradient-to-r from-gold-50 to-gold-100 p-5 md:p-6 rounded-[1.5rem] shadow-sm border border-gold-200 hover:shadow-md transition-shadow relative overflow-hidden">
+                        <div className="absolute top-0 right-0 bg-gold-500 text-white text-[10px] font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-widest shadow-sm flex items-center"><Icon name="Info" className="w-3 h-3 mr-1" /> Info</div>
+                        <h2 className="text-[1.15rem] font-bold mb-3 text-navy-900 flex items-center">
+                            <Icon name="Megaphone" className="w-[1.25rem] h-[1.25rem] mr-2 text-gold-600" /> Pengumuman Jemaat
+                        </h2>
+                        <div className="text-navy-800 text-sm whitespace-pre-wrap font-medium leading-relaxed">
+                            {pengumuman}
+                        </div>
+                    </div>
+                )}
 
                 <div className="bg-white p-5 md:p-7 rounded-[1.5rem] shadow-sm border border-navy-100/60 hover:shadow-md transition-shadow">
                     <h2 className="text-[1.15rem] font-bold mb-4 text-navy-900 flex items-center">
@@ -1049,20 +1063,11 @@
             );
         };
 
-        const AdminDashboard = ({ dataPejabat, setDataPejabat, jadwalDB, setJadwalDB, adminToken, setAdminToken, youtubeUrl, setYoutubeUrl, kategoriPejabat, setKategoriPejabat }) => {
-            const [adminTab, setAdminTab] = React.useState('jadwal'); // jadwal, pelayan, pengaturan
-            const [viewMonth, setViewMonth] = React.useState(new Date().getMonth());
-            const [viewYear, setViewYear] = React.useState(new Date().getFullYear());
-            const [subTab, setSubTab] = React.useState('rabu');
-            const [editingDate, setEditingDate] = React.useState(null);
-            const [editForm, setEditForm] = React.useState([]);
-            const [isSavingJadwal, setIsSavingJadwal] = React.useState(false);
-            const [isSavingPejabat, setIsSavingPejabat] = React.useState(false);
+        const AdminDashboard = ({ dataPejabat, setDataPejabat, jadwalDB, setJadwalDB, adminToken, setAdminToken, youtubeUrl, setYoutubeUrl, kategoriPejabat, setKategoriPejabat, pengumuman, setPengumuman }) => {
+            const [adminTab, setAdminTab] = React.useState('pengaturan'); // jadwal, pelayan, pengaturan
 
             // State Ganti Password
-            const [oldPassword, setOldPassword] = React.useState('');
             const [newPassword, setNewPassword] = React.useState('');
-            const [showOldPass, setShowOldPass] = React.useState(false);
             const [showNewPass, setShowNewPass] = React.useState(false);
             const [isChangingPass, setIsChangingPass] = React.useState(false);
 
@@ -1070,224 +1075,35 @@
             const [editYoutubeUrl, setEditYoutubeUrl] = React.useState(youtubeUrl);
             const [isSavingUrl, setIsSavingUrl] = React.useState(false);
 
-            // Drag and Drop States
-            const [draggedItem, setDraggedItem] = React.useState(null);
+            // State Pengumuman
+            const [editPengumuman, setEditPengumuman] = React.useState(pengumuman);
+            const [isSavingPengumuman, setIsSavingPengumuman] = React.useState(false);
 
-            const handleDragStart = (e, item) => {
-                setDraggedItem(item);
-                setTimeout(() => { if (e.target) e.target.style.opacity = '0.5'; }, 0);
-            };
-            const handleDragEnd = (e) => {
-                if (e.target) e.target.style.opacity = '1';
-                setDraggedItem(null);
-            };
-            const handleDragOver = (e) => { e.preventDefault(); };
-            const handleDrop = (e, targetKategori) => {
-                e.preventDefault();
-                if (draggedItem && draggedItem.kategori !== targetKategori) {
-                    const newData = dataPejabat.map(p => p.id === draggedItem.id ? { ...p, kategori: targetKategori } : p);
-                    setDataPejabat(newData);
-                }
-            };
-
-            const handleTambahKategori = () => {
-                const nama = prompt("Masukkan nama kelompok baru:");
-                if (nama && !kategoriPejabat.includes(nama)) {
-                    setKategoriPejabat([...kategoriPejabat, nama]);
-                }
-            };
-            const handleHapusKategori = (kat) => {
-                if (window.confirm(`Hapus kelompok "${kat}"? Pejabat di dalamnya akan dipindahkan ke kategori "Lainnya".`)) {
-                    if (!kategoriPejabat.includes("Lainnya") && kat !== "Lainnya") { setKategoriPejabat([...kategoriPejabat.filter(k => k !== kat), "Lainnya"]); }
-                    else { setKategoriPejabat(kategoriPejabat.filter(k => k !== kat)); }
-                    setDataPejabat(dataPejabat.map(p => p.kategori === kat ? { ...p, kategori: "Lainnya" } : p));
-                }
-            };
-            const handleTambahPejabatBaru = (kat) => {
-                const id_baru = 'pejabat' + Date.now();
-                const obj = { id: id_baru, jabatan: "Jabatan", nama: "Nama Pejabat", wa: "62800000000", img: "https://ui-avatars.com/api/?name=Baru&background=e0e7ff&color=3730a3&size=128", kategori: kat };
-                setDataPejabat([...dataPejabat, obj]);
-            };
-
-            // Referensi untuk fitur scroll tombol tab
-            const scrollContainerRef = React.useRef(null);
-            const scrollTabs = (direction) => {
-                if (scrollContainerRef.current) {
-                    const scrollAmount = 250;
-                    scrollContainerRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
-                }
-            };
-
-            const monthNames = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-
-            const getTriwulan = (m) => {
-                if (m < 3) return "JANUARI - MARET";
-                if (m < 6) return "APRIL - JUNI";
-                if (m < 9) return "JULI - SEPTEMBER";
-                return "OKTOBER - DESEMBER";
-            };
-
-            const prevMonth = () => { if (viewMonth === 0) { setViewMonth(11); setViewYear(viewYear - 1); } else { setViewMonth(viewMonth - 1); } setEditingDate(null); };
-            const nextMonth = () => { if (viewMonth === 11) { setViewMonth(0); setViewYear(viewYear + 1); } else { setViewMonth(viewMonth + 1); } setEditingDate(null); };
-
-            const getDatesForMonth = (year, month, dayOfWeek) => {
-                let d = new Date(year, month, 1);
-                let dates = [];
-                while (d.getDay() !== dayOfWeek) { d.setDate(d.getDate() + 1); }
-                while (d.getMonth() === month) { dates.push(toYMD(d)); d.setDate(d.getDate() + 7); }
-                return dates;
-            };
-
-            const isRabu = subTab === 'rabu';
-            const targetDates = isRabu ? getDatesForMonth(viewYear, viewMonth, 3) : getDatesForMonth(viewYear, viewMonth, 6);
-
-            const getActiveArray = (rowData, tab) => {
-                if (tab === 'rabu') return rowData.petugas;
-                if (tab === 'sekolahSabat') return rowData.sekolahSabat;
-                if (tab === 'khotbah') return rowData.khotbah;
-                if (tab === 'diakon') return rowData.diakon;
-                if (tab === 'musik') return rowData.musik;
-                if (tab === 'perjamuan') return rowData.perjamuan;
-                return [];
-            };
-
-            const subTabs = [
-                { id: 'rabu', label: 'Rabu: Permintaan Doa' },
-                { id: 'sekolahSabat', label: 'Sekolah Sabat' },
-                { id: 'khotbah', label: 'Ibadah Khotbah' },
-                { id: 'susunanAcara', label: 'Susunan Acara (Lagu)' },
-                { id: 'musik', label: 'Petugas Musik' },
-                { id: 'diakon', label: 'Petugas Diakon' },
-                { id: 'perjamuan', label: 'Perjamuan Kudus' }
-            ];
-
-            const currentSubTabLabel = subTabs.find(t => t.id === subTab)?.label || '';
-            const columns = subTab === 'susunanAcara' ? ["Status Pengisian"] : getActiveArray(isRabu ? initialJadwalRabu : initialJadwalSabat, subTab).map(p => p.tugas);
-
-            const handleEditClick = (date) => {
-                setEditingDate(date);
-                const existingData = jadwalDB[date] || (isRabu ? initialJadwalRabu : initialJadwalSabat);
-                if (subTab === 'susunanAcara') {
-                    setEditForm(JSON.parse(JSON.stringify(existingData.susunan || defaultSusunan)));
-                } else {
-                    setEditForm(JSON.parse(JSON.stringify(getActiveArray(existingData, subTab))));
-                }
-            };
-
-            const handleEditFormChange = (index, value) => {
-                const newForm = [...editForm];
-                newForm[index].nama = value;
-                setEditForm(newForm);
-            };
-
-            const handleEditFormChangeSusunan = (field, value) => {
-                setEditForm(prev => ({ ...prev, [field]: value }));
-            };
-
-            // SIMPAN JADWAL
-            const handleSaveRow = (date) => {
-                const baseData = jadwalDB[date] ? JSON.parse(JSON.stringify(jadwalDB[date])) : JSON.parse(JSON.stringify(isRabu ? initialJadwalRabu : initialJadwalSabat));
-                if (subTab === 'rabu') baseData.petugas = editForm;
-                else if (subTab === 'sekolahSabat') baseData.sekolahSabat = editForm;
-                else if (subTab === 'khotbah') baseData.khotbah = editForm;
-                else if (subTab === 'susunanAcara') baseData.susunan = editForm;
-                else if (subTab === 'diakon') baseData.diakon = editForm;
-                else if (subTab === 'musik') baseData.musik = editForm;
-                else if (subTab === 'perjamuan') baseData.perjamuan = editForm;
-
-                setIsSavingJadwal(true);
-
-                fetch(GAS_API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        action: 'saveJadwal',
-                        password: adminToken, // Otorisasi
-                        tanggal: date,
-                        data: baseData
-                    })
-                })
-                    .then(res => res.json())
-                    .then(result => {
-                        setIsSavingJadwal(false);
-                        if (result.success) {
-                            setJadwalDB({ ...jadwalDB, [date]: baseData });
-                            setEditingDate(null);
-                        } else { alert("Gagal menyimpan: " + (result.message || "Akses ditolak.")); }
-                    })
-                    .catch(err => { alert("Gagal terhubung ke server."); setIsSavingJadwal(false); });
-            };
-
-            // HAPUS (RESET) JADWAL
-            const handleDeleteRow = (date) => {
-                if (!jadwalDB[date]) return;
-                if (window.confirm(`Kembalikan jadwal ${formatIndoDateShort(date)} ke default?`)) {
-                    setIsSavingJadwal(true);
-                    const defaultData = JSON.parse(JSON.stringify(isRabu ? initialJadwalRabu : initialJadwalSabat));
-
-                    fetch(GAS_API_URL, {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            action: 'saveJadwal',
-                            password: adminToken, // Otorisasi
-                            tanggal: date,
-                            data: defaultData
-                        })
-                    })
-                        .then(res => res.json())
-                        .then(result => {
-                            setIsSavingJadwal(false);
-                            if (result.success) {
-                                const newDB = { ...jadwalDB };
-                                delete newDB[date];
-                                setJadwalDB(newDB);
-                            } else { alert("Gagal mereset: " + (result.message || "Akses ditolak.")); }
-                        })
-                        .catch(err => { alert("Gagal mereset data."); setIsSavingJadwal(false); });
-                }
-            };
-
-            // SIMPAN PEJABAT
-            const handleSimpanPejabat = () => {
-                setIsSavingPejabat(true);
-                fetch(GAS_API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        action: 'savePejabat',
-                        password: adminToken, // Otorisasi
-                        data: dataPejabat,
-                        kategoriPejabat: kategoriPejabat
-                    })
-                })
-                    .then(res => res.json())
-                    .then(result => {
-                        setIsSavingPejabat(false);
-                        if (result.success) {
-                            alert("Berhasil! Data Pelayan Jemaat tersimpan di Google Sheets.");
-                        } else { alert("Gagal menyimpan: " + (result.message || "Akses ditolak.")); }
-                    })
-                    .catch(err => { alert("Gagal menyimpan data Pejabat."); setIsSavingPejabat(false); });
-            };
-
-            // GANTI PASSWORD
-            const handleGantiPassword = async (e) => {
+            // ==========================================
+            // PERBAIKAN: Menambahkan handleChangePassword
+            // ==========================================
+            const handleChangePassword = async (e) => {
                 e.preventDefault();
                 setIsChangingPass(true);
                 try {
                     const res = await fetch(GAS_API_URL, {
                         method: 'POST',
-                        body: JSON.stringify({ action: 'changePassword', oldPassword: oldPassword, newPassword: newPassword })
+                        body: JSON.stringify({ 
+                            action: 'changePassword', 
+                            password: adminToken,     // Password lama (token yang sedang login)
+                            newPassword: newPassword  // Password baru yang diinput
+                        })
                     });
                     const result = await res.json();
                     if (result.success) {
-                        alert("Password Admin berhasil diperbarui!");
-                        setAdminToken(newPassword); // Update token lokal
-                        setOldPassword('');
-                        setNewPassword('');
+                        alert("Password berhasil diperbarui!");
+                        setAdminToken(newPassword); // Update token session saat ini
+                        setNewPassword('');         // Kosongkan input
                     } else {
-                        alert("Gagal merubah password: " + (result.message || "Password lama salah."));
+                        alert("Gagal merubah password: " + (result.message || "Akses ditolak."));
                     }
                 } catch (err) {
-                    alert("Gagal terhubung ke server.");
+                    alert("Gagal terhubung ke server saat mengganti password.");
                 }
                 setIsChangingPass(false);
             };
@@ -1299,7 +1115,7 @@
                 try {
                     const res = await fetch(GAS_API_URL, {
                         method: 'POST',
-                        body: JSON.stringify({ action: 'saveYoutubeUrl', password: adminToken, url: editYoutubeUrl })
+                        body: JSON.stringify({ action: 'saveYoutubeUrl', password: adminToken, youtubeUrl: editYoutubeUrl })
                     });
                     const result = await res.json();
                     if (result.success) {
@@ -1312,6 +1128,28 @@
                     alert("Gagal terhubung ke server.");
                 }
                 setIsSavingUrl(false);
+            };
+
+            // SIMPAN PENGUMUMAN
+            const handleSavePengumuman = async (e) => {
+                e.preventDefault();
+                setIsSavingPengumuman(true);
+                try {
+                    const res = await fetch(GAS_API_URL, {
+                        method: 'POST',
+                        body: JSON.stringify({ action: 'savePengumuman', password: adminToken, pengumuman: editPengumuman })
+                    });
+                    const result = await res.json();
+                    if (result.success) {
+                        alert("Pengumuman berhasil diperbarui!");
+                        setPengumuman(editPengumuman);
+                    } else {
+                        alert("Gagal merubah pengumuman: " + (result.message || "Akses ditolak."));
+                    }
+                } catch (err) {
+                    alert("Gagal terhubung ke server.");
+                }
+                setIsSavingPengumuman(false);
             };
 
             const handleFileChange = (e, id) => {
@@ -1619,49 +1457,67 @@
                             )}
 
                             {adminTab === 'pengaturan' && (
-                                <div className="max-w-md mx-auto animate-fade-in space-y-6">
+                                <div className="space-y-6 md:space-y-8 animate-fade-in relative z-10">
+                                    
+                                    {/* --- FORM GANTI PASSWORD --- */}
                                     <div className="bg-white border border-navy-100/60 rounded-[1.5rem] p-6 shadow-sm">
                                         <div className="flex items-center space-x-4 mb-6 border-b border-navy-50 pb-5">
-                                            <div className="w-12 h-12 bg-navy-50 rounded-full flex items-center justify-center text-navy-900 shadow-inner"><Icon name="Settings" className="w-6 h-6" /></div>
-                                            <div><h3 className="font-black text-navy-900 text-lg tracking-tight">Ganti Password Admin</h3><p className="text-xs text-navy-500 font-bold uppercase tracking-widest mt-1 mt-1">Keamanan Otentikasi</p></div>
+                                            <div className="w-12 h-12 bg-navy-50 rounded-full flex items-center justify-center text-navy-600 shadow-inner"><Icon name="Settings" className="w-6 h-6" /></div>
+                                            <div><h3 className="font-black text-navy-900 text-lg tracking-tight">Ganti Password Admin</h3><p className="text-xs text-navy-500 font-bold uppercase tracking-widest mt-1">Keamanan Sistem</p></div>
                                         </div>
-                                        <form onSubmit={handleGantiPassword} className="space-y-5">
-                                            <div>
-                                                <label className="block text-xs font-bold text-navy-700 mb-2 uppercase tracking-widest">Password Lama</label>
-                                                <div className="relative">
-                                                    <input type={showOldPass ? "text" : "password"} value={oldPassword} onChange={e => setOldPassword(e.target.value)} required className="w-full p-3.5 pr-10 border border-navy-200 rounded-xl focus:border-gold-500 outline-none transition-colors bg-navy-50/50 text-sm font-bold shadow-sm" />
-                                                    <button type="button" onClick={() => setShowOldPass(!showOldPass)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-navy-400 hover:text-gold-500 transition-colors focus:outline-none"><Icon name={showOldPass ? "EyeOff" : "Eye"} className="w-5 h-5" /></button>
-                                                </div>
-                                            </div>
+                                        <form onSubmit={handleChangePassword} className="space-y-5">
                                             <div>
                                                 <label className="block text-xs font-bold text-navy-700 mb-2 uppercase tracking-widest">Password Baru</label>
                                                 <div className="relative">
-                                                    <input type={showNewPass ? "text" : "password"} value={newPassword} onChange={e => setNewPassword(e.target.value)} required minLength="6" className="w-full p-3.5 pr-10 border border-navy-200 rounded-xl focus:border-gold-500 outline-none transition-colors bg-navy-50/50 text-sm font-bold shadow-sm" />
-                                                    <button type="button" onClick={() => setShowNewPass(!showNewPass)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-navy-400 hover:text-gold-500 transition-colors focus:outline-none"><Icon name={showNewPass ? "EyeOff" : "Eye"} className="w-5 h-5" /></button>
+                                                    <input type={showNewPass ? "text" : "password"} value={newPassword} onChange={e => setNewPassword(e.target.value)} required className="w-full p-3.5 border border-navy-200 rounded-xl focus:border-gold-500 outline-none transition-colors bg-navy-50/50 text-sm font-bold shadow-sm pr-12" placeholder="Masukkan password baru" />
+                                                    <button type="button" onClick={() => setShowNewPass(!showNewPass)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-navy-400 hover:text-navy-600 transition-colors">
+                                                        <Icon name={showNewPass ? "EyeOff" : "Eye"} className="w-5 h-5" />
+                                                    </button>
                                                 </div>
                                             </div>
-                                            <button type="submit" disabled={isChangingPass} className={`w-full ${isChangingPass ? 'bg-navy-300 text-navy-500 cursor-not-allowed' : 'bg-navy-900 hover:bg-navy-800 text-gold-400 shadow-md hover:shadow-lg'} font-bold py-3.5 rounded-xl transition-all mt-6 flex items-center justify-center`}>
-                                                {isChangingPass ? <><span className="w-4 h-4 border-2 border-navy-500 border-t-white rounded-full animate-spin mr-2"></span> Memproses...</> : 'Simpan Password Baru'}
+                                            <button type="submit" disabled={isChangingPass} className={`w-full ${isChangingPass ? 'bg-navy-300 text-navy-500 cursor-not-allowed' : 'bg-navy-900 hover:bg-navy-800 text-gold-400 shadow-md hover:shadow-lg'} font-bold py-3.5 rounded-xl transition-all mt-6 flex justify-center items-center`}>
+                                                {isChangingPass ? <><span className="w-4 h-4 border-2 border-navy-500 border-t-white rounded-full animate-spin mr-2"></span> Menyimpan...</> : 'Simpan Password Baru'}
                                             </button>
                                         </form>
                                     </div>
 
+                                    {/* --- FORM YOUTUBE URL --- */}
                                     <div className="bg-white border border-navy-100/60 rounded-[1.5rem] p-6 shadow-sm">
                                         <div className="flex items-center space-x-4 mb-6 border-b border-navy-50 pb-5">
-                                            <div className="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center text-red-500 shadow-inner"><Icon name="Video" className="w-6 h-6" /></div>
-                                            <div><h3 className="font-black text-navy-900 text-lg tracking-tight">URL YouTube Embed</h3><p className="text-xs text-navy-500 font-bold uppercase tracking-widest mt-1">Live Streaming Acara</p></div>
+                                            <div className="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center text-red-600 shadow-inner">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                                            </div>
+                                            <div><h3 className="font-black text-navy-900 text-lg tracking-tight">URL Video YouTube</h3><p className="text-xs text-navy-500 font-bold uppercase tracking-widest mt-1">Video di Halaman Utama</p></div>
                                         </div>
                                         <form onSubmit={handleSaveYoutubeUrl} className="space-y-5">
                                             <div>
-                                                <label className="block text-xs font-bold text-navy-700 mb-2 uppercase tracking-widest">Tautan Video Embed</label>
-                                                <textarea value={editYoutubeUrl} onChange={e => setEditYoutubeUrl(e.target.value)} required rows="3" className="w-full p-3.5 border border-navy-200 rounded-xl focus:border-gold-500 outline-none transition-colors bg-navy-50/50 text-sm font-mono font-medium shadow-sm leading-relaxed"></textarea>
-                                                <p className="text-[10px] text-navy-500 mt-2 font-bold leading-relaxed bg-navy-50 p-2.5 rounded-lg border border-navy-100">Pastikan URL diawali dengan <br /><span className="text-gold-600">https://www.youtube.com/embed/</span>... atau <br /><span className="text-gold-600">https://www.youtube-nocookie.com/embed/</span>...</p>
+                                                <label className="block text-xs font-bold text-navy-700 mb-2 uppercase tracking-widest">Link Embed YouTube</label>
+                                                <input type="text" value={editYoutubeUrl} onChange={e => setEditYoutubeUrl(e.target.value)} required placeholder="Contoh: https://www.youtube.com/embed/..." className="w-full p-3.5 border border-navy-200 rounded-xl focus:border-gold-500 outline-none transition-colors bg-navy-50/50 text-sm font-medium shadow-sm" />
                                             </div>
                                             <button type="submit" disabled={isSavingUrl} className={`w-full ${isSavingUrl ? 'bg-navy-300 text-navy-500 cursor-not-allowed' : 'bg-navy-900 hover:bg-navy-800 text-gold-400 shadow-md hover:shadow-lg'} font-bold py-3.5 rounded-xl transition-all mt-6 flex justify-center items-center`}>
-                                                {isSavingUrl ? <><span className="w-4 h-4 border-2 border-navy-500 border-t-white rounded-full animate-spin mr-2"></span> Menyimpan...</> : 'Simpan URL Baru'}
+                                                {isSavingUrl ? <><span className="w-4 h-4 border-2 border-navy-500 border-t-white rounded-full animate-spin mr-2"></span> Menyimpan...</> : 'Simpan URL YouTube'}
                                             </button>
                                         </form>
                                     </div>
+
+                                    {/* --- FORM PENGUMUMAN --- */}
+                                    <div className="bg-white border border-navy-100/60 rounded-[1.5rem] p-6 shadow-sm">
+                                        <div className="flex items-center space-x-4 mb-6 border-b border-navy-50 pb-5">
+                                            <div className="w-12 h-12 bg-gold-50 rounded-full flex items-center justify-center text-gold-600 shadow-inner"><Icon name="Megaphone" className="w-6 h-6" /></div>
+                                            <div><h3 className="font-black text-navy-900 text-lg tracking-tight">Pengumuman Jemaat</h3><p className="text-xs text-navy-500 font-bold uppercase tracking-widest mt-1">Tampil di Halaman Depan</p></div>
+                                        </div>
+                                        <form onSubmit={handleSavePengumuman} className="space-y-5">
+                                            <div>
+                                                <label className="block text-xs font-bold text-navy-700 mb-2 uppercase tracking-widest">Isi Pengumuman</label>
+                                                <textarea value={editPengumuman} onChange={e => setEditPengumuman(e.target.value)} rows="4" placeholder="Kosongkan jika tidak ada pengumuman..." className="w-full p-3.5 border border-navy-200 rounded-xl focus:border-gold-500 outline-none transition-colors bg-navy-50/50 text-sm font-medium shadow-sm leading-relaxed whitespace-pre-wrap"></textarea>
+                                                <p className="text-[10px] text-navy-500 mt-2 font-bold leading-relaxed bg-navy-50 p-2.5 rounded-lg border border-navy-100">Bisa menggunakan beberapa baris (Enter). Hapus semua teks untuk menyembunyikan kotak pengumuman dari halaman Home.</p>
+                                            </div>
+                                            <button type="submit" disabled={isSavingPengumuman} className={`w-full ${isSavingPengumuman ? 'bg-navy-300 text-navy-500 cursor-not-allowed' : 'bg-navy-900 hover:bg-navy-800 text-gold-400 shadow-md hover:shadow-lg'} font-bold py-3.5 rounded-xl transition-all mt-6 flex justify-center items-center`}>
+                                                {isSavingPengumuman ? <><span className="w-4 h-4 border-2 border-navy-500 border-t-white rounded-full animate-spin mr-2"></span> Menyimpan...</> : 'Simpan Pengumuman'}
+                                            </button>
+                                        </form>
+                                    </div>
+
                                 </div>
                             )}
                         </div>
@@ -1712,6 +1568,7 @@
             const [dataPejabat, setDataPejabat] = React.useState(initialDataPejabat);
             const [kategoriPejabat, setKategoriPejabat] = React.useState(["Gembala", "Officers", "Departemen & Pelayanan", "Lainnya"]);
             const [youtubeUrl, setYoutubeUrl] = React.useState("https://www.youtube.com/embed/EAO55pnNsgs");
+            const [pengumuman, setPengumuman] = React.useState("");
 
             // Token Admin (berisi password valid setelah login)
             const [adminToken, setAdminToken] = React.useState('');
@@ -1784,6 +1641,7 @@
                         if (data.jadwalDB) setJadwalDB(data.jadwalDB);
                         if (data.youtubeUrl) setYoutubeUrl(data.youtubeUrl);
                         if (data.kategoriPejabat) setKategoriPejabat(data.kategoriPejabat);
+                        if (data.pengumuman !== undefined) setPengumuman(data.pengumuman);
                         setIsAppLoading(false);
                     })
                     .catch(error => {
@@ -1809,7 +1667,7 @@
 
             const renderContent = () => {
                 switch (activeTab) {
-                    case 'home': return <Home setActiveTab={setActiveTab} youtubeUrl={youtubeUrl} />;
+                    case 'home': return <Home setActiveTab={setActiveTab} youtubeUrl={youtubeUrl} pengumuman={pengumuman} />;
                     case 'belajar': return <Belajar setActiveTab={setActiveTab} />;
                     case 'belajar_alkitab': return <DetailAlkitab setActiveTab={setActiveTab} dataPejabat={dataPejabat} />;
                     case 'belajar_28dasar': return <Detail28Dasar setActiveTab={setActiveTab} dataPejabat={dataPejabat} />;
@@ -1823,8 +1681,8 @@
                     case 'hubungi': return <Hubungi setActiveTab={setActiveTab} dataPejabat={dataPejabat} />;
                     case 'form_acms': return <FormACMS setActiveTab={setActiveTab} />;
                     case 'susunan_ibadah': return <SusunanIbadah setActiveTab={setActiveTab} activeSabat={activeSabat} sabatYMD={sabatYMD} />;
-                    case 'admin_dashboard': return isAdminLoggedIn ? <AdminDashboard dataPejabat={dataPejabat} setDataPejabat={setDataPejabat} jadwalDB={jadwalDB} setJadwalDB={setJadwalDB} adminToken={adminToken} setAdminToken={setAdminToken} youtubeUrl={youtubeUrl} setYoutubeUrl={setYoutubeUrl} kategoriPejabat={kategoriPejabat} setKategoriPejabat={setKategoriPejabat} /> : <Home setActiveTab={setActiveTab} youtubeUrl={youtubeUrl} />;
-                    default: return <Home setActiveTab={setActiveTab} youtubeUrl={youtubeUrl} />;
+                    case 'admin_dashboard': return isAdminLoggedIn ? <AdminDashboard dataPejabat={dataPejabat} setDataPejabat={setDataPejabat} jadwalDB={jadwalDB} setJadwalDB={setJadwalDB} adminToken={adminToken} setAdminToken={setAdminToken} youtubeUrl={youtubeUrl} setYoutubeUrl={setYoutubeUrl} kategoriPejabat={kategoriPejabat} setKategoriPejabat={setKategoriPejabat} pengumuman={pengumuman} setPengumuman={setPengumuman} /> : <Home setActiveTab={setActiveTab} youtubeUrl={youtubeUrl} pengumuman={pengumuman} />;
+                    default: return <Home setActiveTab={setActiveTab} youtubeUrl={youtubeUrl} pengumuman={pengumuman} />;
                 }
             };
 
