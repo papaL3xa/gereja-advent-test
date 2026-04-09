@@ -103,18 +103,18 @@ function checkAndInitSheets() {
   }
   
   // Sheet Warta
-var sWarta = ss.getSheetByName("Warta");
-if (!sWarta) {
-  sWarta = ss.insertSheet("Warta");
-  sWarta.appendRow(["Tanggal", "Judul", "Isi", "URL Gambar", "Penulis"]);
-  sWarta.getRange(1,1,1,5).setFontWeight("bold");
-} else {
-  // Cek apakah kolom Penulis sudah ada
-  var headers = sWarta.getRange(1,1,1,sWarta.getLastColumn()).getValues()[0];
-  if (headers.indexOf("Penulis") === -1) {
-    sWarta.getRange(1, sWarta.getLastColumn()+1).setValue("Penulis");
+  var sWarta = ss.getSheetByName("Warta");
+  if (!sWarta) {
+    sWarta = ss.insertSheet("Warta");
+    sWarta.appendRow(["Tanggal", "Judul", "Isi", "URL Gambar", "Penulis"]);
+    sWarta.getRange(1,1,1,5).setFontWeight("bold");
+  } else {
+    // Cek apakah kolom Penulis sudah ada
+    var headers = sWarta.getRange(1,1,1,sWarta.getLastColumn()).getValues()[0];
+    if (headers.indexOf("Penulis") === -1) {
+      sWarta.getRange(1, sWarta.getLastColumn()+1).setValue("Penulis");
+    }
   }
-}
   
   return ss;
 }
@@ -386,49 +386,49 @@ function doPost(e) {
   }
   
   // ==================== FITUR WARTA ====================
-  // 7. Save Warta (tambah baru) - otomatis konversi ke thumbnail
+  // 7. Save Warta (tambah baru)
   if (action === "saveWarta") {
-  var sWarta = ss.getSheetByName("Warta");
-  if (!sWarta) {
-    sWarta = ss.insertSheet("Warta");
-    sWarta.appendRow(["Tanggal", "Judul", "Isi", "URL Gambar", "Penulis"]);
-    sWarta.getRange(1,1,1,5).setFontWeight("bold");
-  }
-  var tanggal = new Date();
-  var gambarUrl = "";
-  if (payload.gambarUrl && payload.gambarUrl.startsWith("data:image")) {
-    gambarUrl = uploadImageToDrive(payload.gambarUrl, "warta_" + new Date().getTime() + ".jpg");
-  } else {
-    gambarUrl = payload.gambarUrl || "";
-  }
-  sWarta.appendRow([tanggal, payload.judul, payload.isi, gambarUrl, payload.penulis || ""]);
-  return ContentService.createTextOutput(JSON.stringify({success: true})).setMimeType(ContentService.MimeType.JSON);
-}
-  
-  // 8. Update Warta (edit) - otomatis konversi gambar baru ke thumbnail
-  if (action === "updateWarta") {
-  try {
     var sWarta = ss.getSheetByName("Warta");
     if (!sWarta) {
-      return ContentService.createTextOutput(JSON.stringify({success: false, message: "Sheet Warta tidak ditemukan"}));
+      sWarta = ss.insertSheet("Warta");
+      sWarta.appendRow(["Tanggal", "Judul", "Isi", "URL Gambar", "Penulis"]);
+      sWarta.getRange(1,1,1,5).setFontWeight("bold");
     }
-    var rowIndex = payload.rowIndex;
-    if (!rowIndex || rowIndex < 2) {
-      return ContentService.createTextOutput(JSON.stringify({success: false, message: "RowIndex tidak valid"}));
-    }
-    var gambarUrl = payload.gambarUrl;
+    var tanggal = new Date();
+    var gambarUrl = "";
     if (payload.gambarUrl && payload.gambarUrl.startsWith("data:image")) {
       gambarUrl = uploadImageToDrive(payload.gambarUrl, "warta_" + new Date().getTime() + ".jpg");
+    } else {
+      gambarUrl = payload.gambarUrl || "";
     }
-    sWarta.getRange(rowIndex, 2).setValue(payload.judul || "");
-    sWarta.getRange(rowIndex, 3).setValue(payload.isi || "");
-    sWarta.getRange(rowIndex, 4).setValue(gambarUrl || "");
-    sWarta.getRange(rowIndex, 5).setValue(payload.penulis || "");   // <-- tambahkan
+    sWarta.appendRow([tanggal, payload.judul, payload.isi, gambarUrl, payload.penulis || ""]);
     return ContentService.createTextOutput(JSON.stringify({success: true})).setMimeType(ContentService.MimeType.JSON);
-  } catch (err) {
-    return ContentService.createTextOutput(JSON.stringify({success: false, message: err.toString()})).setMimeType(ContentService.MimeType.JSON);
   }
-}
+  
+  // 8. Update Warta (edit)
+  if (action === "updateWarta") {
+    try {
+      var sWarta = ss.getSheetByName("Warta");
+      if (!sWarta) {
+        return ContentService.createTextOutput(JSON.stringify({success: false, message: "Sheet Warta tidak ditemukan"}));
+      }
+      var rowIndex = payload.rowIndex;
+      if (!rowIndex || rowIndex < 2) {
+        return ContentService.createTextOutput(JSON.stringify({success: false, message: "RowIndex tidak valid"}));
+      }
+      var gambarUrl = payload.gambarUrl;
+      if (payload.gambarUrl && payload.gambarUrl.startsWith("data:image")) {
+        gambarUrl = uploadImageToDrive(payload.gambarUrl, "warta_" + new Date().getTime() + ".jpg");
+      }
+      sWarta.getRange(rowIndex, 2).setValue(payload.judul || "");
+      sWarta.getRange(rowIndex, 3).setValue(payload.isi || "");
+      sWarta.getRange(rowIndex, 4).setValue(gambarUrl || "");
+      sWarta.getRange(rowIndex, 5).setValue(payload.penulis || "");
+      return ContentService.createTextOutput(JSON.stringify({success: true})).setMimeType(ContentService.MimeType.JSON);
+    } catch (err) {
+      return ContentService.createTextOutput(JSON.stringify({success: false, message: err.toString()})).setMimeType(ContentService.MimeType.JSON);
+    }
+  }
   
   // 9. Delete Warta
   if (action === "deleteWarta") {
@@ -480,9 +480,13 @@ function simpanSusunanAcaraKeTab(ss, tanggal, susunan) {
   }
 }
 
+// =========================================================================
+// FUNGSI MIGRASI (opsional, jalankan sekali jika perlu)
+// =========================================================================
 function migrateWartaToThumbnail() {
   var ss = SpreadsheetApp.openById("1FbdIMEHbY5PY61kx3SFTLjq2CZUISmeQObuO_qPJ5MM");
   var sheet = ss.getSheetByName("Warta");
+  if (!sheet) return;
   var data = sheet.getDataRange().getValues();
   for (var i = 1; i < data.length; i++) {
     var url = data[i][3];
