@@ -405,7 +405,7 @@ const truncateText = (text, maxLength = 500) => {
 
             return (
                 <div className="space-y-6 animate-fade-in">
-                    <button onClick={() => setActiveTab('home')} className="text-navy-00 font-bold flex items-center hover:text-gold-600 transition-colors mb-2">&larr; Kembali ke Home</button>
+                    
 
                     <div className="bg-white rounded-[1.5rem] shadow-sm border border-navy-100/60 overflow-hidden relative">
                         <div className="text-center p-6 md:p-8 border-b border-navy-50 bg-navy-50/30">
@@ -646,10 +646,10 @@ const truncateText = (text, maxLength = 500) => {
             <div className="space-y-6 md:space-y-8 animate-fade-in relative z-10">
                 {/* Tombol GDrive Jadwal Lengkap */}
                 <div className="bg-white p-5 md:p-6 rounded-[1.25rem] shadow-sm border border-navy-100/60 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div>
+                    <center><div>
                         <h3 className="font-bold text-navy-900 text-[1.15rem]">Jadwal Lengkap</h3>
                         <p className="text-sm text-navy-500 mt-1">Lihat dan unduh file PDF jadwal pelayanan bulanan / triwulan</p>
-                    </div>
+                    </div></center>
                     <a href="./TW2-2026.pdf" target="_blank" rel="noopener noreferrer" className="bg-navy-900 hover:bg-navy-800 text-gold-400 px-6 py-3 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition flex items-center shrink-0 w-full sm:w-auto justify-center">
                         <Icon name="BookOpen" className="w-[1.15rem] h-[1.15rem] mr-2 text-gold-500" /> Download
                     </a>
@@ -1171,9 +1171,7 @@ const truncateText = (text, maxLength = 500) => {
 
             return (
                 <div className="space-y-6 animate-fade-in">
-                    <button onClick={() => setActiveTab('home')} className="text-navy-600 font-bold flex items-center hover:text-gold-600 transition-colors mb-2">
-                        &larr; Kembali ke Home
-                    </button>
+                   
                     <div className="bg-white rounded-[1.5rem] p-6 shadow-sm border border-navy-100/60">
                         <h2 className="text-2xl font-bold mb-4 text-navy-900">Warta Gereja</h2>
                         {sortedWarta.length === 0 ? (
@@ -1214,7 +1212,7 @@ const truncateText = (text, maxLength = 500) => {
                                                             <label className="text-xs text-navy-500"></label>
                                                             <input
                                                                 type="range"
-                                                                min="30"
+                                                                min="50"
                                                                 max="100"
                                                                 value={imageWidth}
                                                                 onChange={(e) => handleImageSizeChange(rowIdx, parseInt(e.target.value))}
@@ -2299,10 +2297,17 @@ const insertEditWartaFormatting = (tag) => {
                 <Icon name="Trash" className="w-4 h-4" />
               </button>
             </div>
-          </div>
-          <p className="text-sm text-navy-700 mt-2">{shortPreview}</p>
-          {warta.gambarUrl && <img src={warta.gambarUrl} className="h-16 w-auto object-cover mt-2 rounded" alt="preview" />}
-        </center>
+          </div></center>
+          <div className="flex gap-3 items-start">
+  {warta.gambarUrl && (
+    <img 
+      src={warta.gambarUrl} 
+      className="h-20 w-auto object-cover rounded shrink-0" 
+      alt="preview" 
+    />
+  )}
+  <p className="text-xs text-justify text-navy-700">{shortPreview}</p>
+</div>
       </div>
     );
   })}
